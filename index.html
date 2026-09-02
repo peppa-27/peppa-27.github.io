@@ -3,110 +3,145 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="peppa-27 的 GitHub 个人主页，收集 Cocodex、CT/MR 配准、城市新闻分析和主页项目。">
-  <title>peppa-27 | GitHub Homepage</title>
+  <meta name="description" content="peppa-27 的轻松二次元 GitHub 主页，放一点代码、一点项目和一点碎碎念。">
+  <title>peppa-27 | 小小开发部</title>
   <style>
     :root {
-      --ink: #20243a;
-      --muted: #64708a;
-      --line: rgba(73, 88, 126, 0.18);
-      --paper: rgba(255, 255, 255, 0.82);
-      --paper-strong: rgba(255, 255, 255, 0.95);
-      --blue: #4f74d9;
-      --green: #1d9a99;
-      --rose: #cc5f82;
-      --shadow: 0 20px 60px rgba(48, 61, 98, 0.16);
+      --ink: #252044;
+      --muted: #706b8f;
+      --paper: rgba(255, 255, 255, 0.78);
+      --paper-strong: rgba(255, 255, 255, 0.92);
+      --line: rgba(122, 118, 184, 0.24);
+      --blue: #6785ff;
+      --violet: #8f7bff;
+      --pink: #7fa4ff;
+      --mint: #5dcfc5;
+      --yellow: #cfe8ff;
+      --shadow: 0 22px 60px rgba(85, 91, 160, 0.18);
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
+      min-height: 100vh;
       color: var(--ink);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.65;
+      font-family: "Segoe UI", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+      line-height: 1.7;
       background:
-        linear-gradient(180deg, rgba(246, 248, 255, 0.72), #f8f9fc 540px),
-        url("background_title.png") top center / min(1920px, 150vw) auto no-repeat,
-        #f8f9fc;
+        linear-gradient(180deg, rgba(237, 246, 255, 0.04) 0, rgba(237, 246, 255, 0.16) 360px, rgba(226, 240, 255, 0.82) 720px, #eaf6ff 1000px),
+        url("1.png") top center / min(1920px, 150vw) auto no-repeat,
+        linear-gradient(180deg, #eff8ff 0, #eaf6ff 48%, #f7fbff 100%);
+      overflow-x: hidden;
     }
-
     a { color: inherit; text-decoration: none; }
 
     .page {
-      width: min(1100px, calc(100% - 36px));
+      width: min(1080px, calc(100% - 34px));
       margin: 0 auto;
+      position: relative;
     }
 
     .nav {
       position: sticky;
       top: 0;
       z-index: 10;
+      min-height: 68px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 68px;
       backdrop-filter: blur(18px);
     }
 
     .brand {
-      font-weight: 800;
-      letter-spacing: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-weight: 900;
+    }
+
+    .brand::before {
+      content: "♪";
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6f9dff, #9bbdff);
+      color: white;
+      box-shadow: 0 10px 24px rgba(103, 133, 255, 0.28);
     }
 
     .brand span { color: var(--blue); }
 
     .nav-links {
       display: flex;
-      gap: 18px;
-      color: #3d4660;
-      font-size: 14px;
-      font-weight: 650;
+      gap: 8px;
+      padding: 7px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.58);
+      box-shadow: 0 10px 30px rgba(99, 99, 170, 0.08);
     }
 
     .nav-links a {
-      padding: 8px 0;
-      border-bottom: 2px solid transparent;
+      padding: 7px 12px;
+      border-radius: 999px;
+      color: #504a78;
+      font-size: 13px;
+      font-weight: 800;
     }
 
-    .nav-links a:hover { border-color: var(--blue); }
+    .nav-links a:hover {
+      background: white;
+      color: var(--blue);
+    }
 
     .hero {
-      min-height: 620px;
+      min-height: 650px;
       display: grid;
       align-items: center;
-      padding: 84px 0 72px;
+      padding: 88px 0 62px;
     }
 
-    .hero-copy { width: min(620px, 100%); }
+    .hero-box {
+      width: min(650px, 100%);
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.34);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      margin: 0 0 18px;
+      gap: 8px;
+      margin: 0 0 16px;
       padding: 7px 12px;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(103, 133, 255, 0.22);
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.62);
-      color: #3b5ca8;
+      color: #5c63ca;
       font-size: 13px;
-      font-weight: 750;
+      font-weight: 900;
     }
+
+    .eyebrow::before { content: "☆"; color: var(--blue); }
 
     h1 {
       margin: 0;
-      max-width: 700px;
-      font-size: clamp(44px, 8vw, 86px);
-      line-height: 0.98;
+      font-size: clamp(44px, 8vw, 82px);
+      line-height: 1.02;
       letter-spacing: 0;
     }
 
-    .hero p {
-      margin: 24px 0 0;
-      max-width: 590px;
-      color: #3f4964;
+    .lead {
+      margin: 22px 0 0;
+      max-width: 560px;
+      color: #524d75;
       font-size: clamp(17px, 2vw, 20px);
     }
 
@@ -114,7 +149,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 34px;
+      margin-top: 30px;
     }
 
     .button {
@@ -123,79 +158,216 @@
       justify-content: center;
       min-height: 44px;
       padding: 0 18px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--paper-strong);
-      color: #25304a;
-      font-weight: 760;
-      box-shadow: 0 8px 24px rgba(44, 65, 120, 0.10);
+      border: 1px solid rgba(103, 133, 255, 0.22);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      color: #3f3a68;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(91, 101, 174, 0.13);
     }
 
     .button.primary {
       border-color: transparent;
-      background: #23304e;
-      color: #fff;
+      background: linear-gradient(135deg, #6f9dff, #9bbdff);
+      color: white;
     }
 
-    section { padding: 44px 0; }
+    .dock {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: -26px;
+      margin-bottom: 28px;
+    }
 
-    .section-head {
+    .dock a {
+      min-height: 92px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--paper);
+      box-shadow: 0 16px 42px rgba(99, 99, 170, 0.12);
+      backdrop-filter: blur(12px);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .dock a:hover {
+      transform: translateY(-4px) rotate(-1deg);
+      box-shadow: 0 20px 46px rgba(99, 99, 170, 0.18);
+    }
+
+    .dock b {
+      display: block;
+      font-size: 18px;
+    }
+
+    .dock span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    section { padding: 46px 0; }
+
+    .section-title {
       display: flex;
-      align-items: end;
+      align-items: center;
       justify-content: space-between;
-      gap: 22px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 16px;
+      gap: 18px;
+      margin-bottom: 18px;
     }
 
-    h2 {
+    .section-title h2 {
       margin: 0;
       font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.1;
-      letter-spacing: 0;
+      line-height: 1.08;
     }
 
-    .section-head p {
+    .section-title p {
       margin: 0;
       max-width: 460px;
       color: var(--muted);
       font-size: 15px;
     }
 
-    .project-list {
+    .about {
       display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+    }
+
+    .bubble, .project, .memo, .skill {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--paper-strong);
+      box-shadow: 0 18px 46px rgba(93, 96, 166, 0.12);
+    }
+
+    .bubble {
+      padding: 24px;
+    }
+
+    .bubble h3, .memo h3, .skill h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .bubble p, .memo p {
+      margin: 0;
+      color: #585179;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
       gap: 14px;
+      padding: 11px 13px;
+      border-radius: 14px;
+      background: rgba(239, 242, 255, 0.76);
+      color: #5d587b;
+    }
+
+    .mini-list strong { color: var(--ink); }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
     }
 
     .project {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 24px;
-      align-items: start;
+      position: relative;
+      overflow: hidden;
+      min-height: 290px;
       padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--paper);
-      box-shadow: var(--shadow);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 24px 60px rgba(93, 96, 166, 0.18);
+    }
+
+    .project::after {
+      content: "";
+      position: absolute;
+      right: -50px;
+      top: -50px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(103, 133, 255, 0.14);
+    }
+
+    .project:nth-child(2)::after { background: rgba(127, 164, 255, 0.14); }
+    .project:nth-child(3)::after { background: rgba(93, 207, 197, 0.16); }
+    .project:nth-child(4)::after { background: rgba(207, 232, 255, 0.42); }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 12px 26px rgba(103, 133, 255, 0.22);
+    }
+
+    .project:nth-child(2) .project-icon { background: linear-gradient(135deg, var(--pink), var(--violet)); }
+    .project:nth-child(3) .project-icon { background: linear-gradient(135deg, var(--mint), var(--blue)); }
+    .project:nth-child(4) .project-icon { background: linear-gradient(135deg, var(--yellow), var(--pink)); }
+
+    .status {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: #6a65a0;
+      font-size: 12px;
+      font-weight: 850;
     }
 
     .project h3 {
-      margin: 0 0 8px;
-      font-size: 22px;
-      line-height: 1.25;
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.2;
+      position: relative;
+      z-index: 1;
     }
 
     .project p {
-      margin: 0;
-      color: #526078;
+      margin: 12px 0 0;
+      color: #585179;
+      position: relative;
+      z-index: 1;
     }
 
     .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 16px;
+      margin-top: 18px;
+      position: relative;
+      z-index: 1;
     }
 
     .tag {
@@ -204,77 +376,90 @@
       min-height: 28px;
       padding: 0 10px;
       border-radius: 999px;
-      background: rgba(79, 116, 217, 0.10);
-      color: #37529b;
+      background: rgba(103, 133, 255, 0.10);
+      color: #575fc6;
       font-size: 12px;
-      font-weight: 760;
+      font-weight: 850;
     }
 
     .project-link {
-      white-space: nowrap;
-      color: var(--blue);
-      font-weight: 800;
+      display: inline-flex;
+      margin-top: 18px;
+      color: #5b63d5;
+      font-weight: 900;
+      position: relative;
+      z-index: 1;
     }
 
-    .two-col {
+    .skill-grid, .memo-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
-    .panel {
-      padding: 24px;
+    .skill, .memo {
+      padding: 22px;
+    }
+
+    .playlist {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .track {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 16px;
       border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--paper-strong);
-      box-shadow: 0 14px 44px rgba(49, 64, 98, 0.10);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 14px 36px rgba(93, 96, 166, 0.10);
     }
 
-    .panel h3 {
-      margin: 0 0 12px;
-      font-size: 20px;
+    .cover {
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #6f9dff, #9bbdff);
+      color: white;
+      font-size: 24px;
     }
 
-    .plain-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      color: #526078;
-    }
-
-    .plain-list li {
-      padding: 10px 0;
-      border-top: 1px solid rgba(73, 88, 126, 0.12);
-    }
-
-    .plain-list li:first-child {
-      border-top: 0;
-      padding-top: 0;
-    }
+    .track strong { display: block; }
+    .track span { color: var(--muted); font-size: 14px; }
 
     .contact {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 24px;
+      gap: 22px;
       align-items: center;
-      margin: 34px 0 64px;
+      margin: 32px 0 62px;
       padding: 28px;
-      border-radius: 8px;
-      background: #20243a;
-      color: #fff;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(93, 145, 230, 0.94), rgba(143, 188, 244, 0.92));
+      color: white;
       box-shadow: var(--shadow);
     }
 
-    .contact h2 { font-size: clamp(26px, 4vw, 38px); }
+    .contact h2 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 38px);
+    }
 
     .contact p {
-      margin: 10px 0 0;
-      color: rgba(255, 255, 255, 0.72);
+      margin: 8px 0 0;
+      color: rgba(255, 255, 255, 0.82);
     }
 
     .contact .button {
-      background: #fff;
-      color: #20243a;
+      background: white;
+      color: #565ed0;
     }
 
     footer {
@@ -284,202 +469,196 @@
       text-align: center;
     }
 
-    @media (max-width: 760px) {
-      body {
-        background-size: auto 430px;
-        background-position: top right 32%;
-      }
-
-      .page { width: min(100% - 28px, 1100px); }
-      .nav { min-height: 60px; }
-
-      .nav-links {
-        gap: 12px;
-        font-size: 13px;
-      }
-
-      .hero {
-        min-height: 560px;
-        align-items: end;
-        padding-top: 140px;
-      }
-
-      .section-head,
-      .project,
-      .two-col,
-      .contact {
+    @media (max-width: 840px) {
+      .dock, .project-grid, .about, .skill-grid, .memo-grid, .playlist, .contact {
         grid-template-columns: 1fr;
       }
 
-      .section-head { align-items: start; }
-      .project-link { justify-self: start; }
-      .contact { margin-bottom: 42px; }
+      .dock {
+        margin-top: 0;
+      }
+
+      .section-title {
+        align-items: flex-start;
+        flex-direction: column;
+      }
     }
 
-    @media (max-width: 520px) {
-      .nav-links a:nth-child(2) { display: none; }
-      .project, .panel, .contact { padding: 20px; }
+    @media (max-width: 620px) {
+      body {
+        background-size: auto 470px;
+        background-position: top right 33%;
+      }
+
+      .page { width: min(100% - 26px, 1080px); }
+      .nav { align-items: flex-start; padding-top: 12px; }
+      .nav-links { gap: 4px; padding: 5px; }
+      .nav-links a { padding: 6px 8px; font-size: 12px; }
+      .hero { min-height: 630px; align-items: end; padding-top: 110px; }
+      .hero-box { padding: 22px; border-radius: 20px; }
+      .project { min-height: auto; }
+      .contact { align-items: start; }
     }
   </style>
 </head>
 <body>
   <nav class="page nav" aria-label="主导航">
-    <a class="brand" href="#">peppa-27<span>.github.io</span></a>
+    <a class="brand" href="#">peppa-27<span>的小站</span></a>
     <div class="nav-links">
+      <a href="#about">About</a>
       <a href="#projects">Projects</a>
-      <a href="#notes">Notes</a>
       <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+      <a href="#notes">Notes</a>
     </div>
   </nav>
 
   <main>
     <header class="page hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Python / GitHub Pages / AI Side Projects</p>
-        <h1>peppa-27 的项目小主页。</h1>
-        <p>
-          这里放几个公开仓库：有 Codex 监视器、CT/MR 配准程序、城市新闻分析系统，
-          还有这个刚支起来的 GitHub Pages 首页。东西不多，但方向还挺有意思。
+      <div class="hero-box">
+        <p class="eyebrow">既不生物，也不医学，弄点工程</p>
+        <h1>你像我见过的那个山田凉</h1>
+        <p class="lead">
+          这里放一点 Python，一点医学图像，一点 AI 工具，还有一些还没打磨完但已经能看的小项目。
+          有点杂乱，想得太多，做得太浅。
         </p>
         <div class="actions">
-          <a class="button primary" href="#projects">看项目</a>
-          <a class="button" href="https://github.com/peppa-27" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button primary" href="#projects">翻项目柜</a>
+          <a class="button" href="https://github.com/peppa-27" target="_blank" rel="noreferrer">去 GitHub</a>
         </div>
       </div>
     </header>
 
-    <section id="projects" class="page">
-      <div class="section-head">
-        <h2>Projects</h2>
-        <p>来自 peppa-27 GitHub 主页的公开仓库，按最近项目和可展示程度整理了一下。</p>
+    <div class="page dock" aria-label="快捷入口">
+      <a href="#projects"><b>Projects</b><span>几只还在施工的小项目</span></a>
+      <a href="#about"><b>About</b><span>最近在折腾什么</span></a>
+      <a href="#skills"><b>Skills</b><span>常用技能贴纸</span></a>
+      <a href="#notes"><b>Notes</b><span>之后想补的碎碎念</span></a>
+    </div>
+
+    <section id="about" class="page">
+      <div class="section-title">
+        <h2>About me</h2>
+        <p>主页是自己的，所以口吻也随意一点。项目先摆上来，细节以后慢慢补。</p>
       </div>
-
-      <div class="project-list">
-        <article class="project">
-          <div>
-            <h3>peppa-27.github.io</h3>
-            <p>这个 GitHub Pages 个人主页本体。用一份静态 HTML 搞定个人介绍、项目展示、技能和联系方式，部署起来很轻。</p>
-            <div class="tags">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">GitHub Pages</span>
-            </div>
-          </div>
-          <a class="project-link" href="https://github.com/peppa-27/peppa-27.github.io" target="_blank" rel="noreferrer">View repo</a>
-        </article>
-
-        <article class="project">
-          <div>
-            <h3>Cocodex</h3>
-            <p>一个自用的 Codex 监视器和二次元小部件，偏娱乐向。它不依赖 ChatGPT 客户端，只围绕 VS Code 插件或 Codex CLI 跑。</p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Codex CLI</span>
-              <span class="tag">Desktop Widget</span>
-              <span class="tag">MIT</span>
-            </div>
-          </div>
-          <a class="project-link" href="https://github.com/peppa-27/Cocodex" target="_blank" rel="noreferrer">View repo</a>
-        </article>
-
-        <article class="project">
-          <div>
-            <h3>CT_MR_calibration</h3>
-            <p>自用的 CT/MR 配准程序。名字很直白，目标也很直白：把医学图像配准流程整理成能重复跑、能继续改的代码。</p>
-            <div class="tags">
-              <span class="tag">Medical Imaging</span>
-              <span class="tag">Registration</span>
-              <span class="tag">Research Tool</span>
-            </div>
-          </div>
-          <a class="project-link" href="https://github.com/peppa-27/CT_MR_calibration" target="_blank" rel="noreferrer">View repo</a>
-        </article>
-
-        <article class="project">
-          <div>
-            <h3>simple_city_news_analysis</h3>
-            <p>一个比赛用的城市新闻分析小系统，用 Python 做信息整理和分析。仓库不花哨，但很适合展示数据处理思路。</p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">News Analysis</span>
-              <span class="tag">Competition</span>
-              <span class="tag">MIT</span>
-            </div>
-          </div>
-          <a class="project-link" href="https://github.com/peppa-27/simple_city_news_analysis" target="_blank" rel="noreferrer">View repo</a>
-        </article>
+      <div class="about">
+        <div class="bubble">
+          <h3>现在的频道</h3>
+          <p>最近主要在 Python、医学图像处理、AI 编程工具之间来回切换。</p>
+          <p>代码有时候像实验记录，有时候像自用小工具，总之先让它跑起来。</p>
+          <p>其实我不喜欢写代码，我只是想起那天那节稀疏学习课。</p>
+        </div>
+        <div class="bubble">
+          <h3>小站状态</h3>
+          <ul class="mini-list">
+            <li><strong>公开仓库</strong><span>4 个</span></li>
+            <li><strong>主要语言</strong><span>Python / HTML / CSS</span></li>
+            <li><strong>风格</strong><span>轻松、二次元、别太正经</span></li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section id="notes" class="page">
-      <div class="section-head">
-        <h2>Notes</h2>
-        <p>按现在的仓库看，主要是在 AI 工具、医学图像和数据分析之间来回折腾。</p>
+    <section id="projects" class="page">
+      <div class="section-title">
+        <h2>Project shelf</h2>
+        <p>真实仓库 + 一点轻松包装。没有大厂味，小作坊下猛料。</p>
       </div>
 
-      <div class="two-col">
-        <div class="panel">
-          <h3>最近在折腾</h3>
-          <ul class="plain-list">
-            <li>把 GitHub Pages 主页收拾成真正能展示项目的入口</li>
-            <li>继续完善 Cocodex，让它更像一个顺手的小监视器</li>
-            <li>整理 CT/MR 配准和新闻分析项目的说明文档</li>
-          </ul>
-        </div>
-        <div class="panel">
-          <h3>以后想写</h3>
-          <ul class="plain-list">
-            <li>Cocodex 的使用记录和改进计划</li>
-            <li>CT/MR 配准流程里值得记下来的坑</li>
-            <li>城市新闻分析系统的思路拆解</li>
-          </ul>
-        </div>
+      <div class="project-grid">
+        <article class="project">
+          <div class="project-top">
+            <div class="project-icon">⌘</div>
+            <span class="status">main quest</span>
+          </div>
+          <h3>Cocodex</h3>
+          <p>自用的 Codex 监视器，也是一个带点二次元味道的小部件。想法很简单：写代码的时候，旁边有个能看状态的小东西会比较开心。</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Codex CLI</span><span class="tag">Widget</span><span class="tag">MIT</span></div>
+          <a class="project-link" href="https://github.com/peppa-27/Cocodex" target="_blank" rel="noreferrer">打开仓库 →</a>
+        </article>
+
+        <article class="project">
+          <div class="project-top">
+            <div class="project-icon">CT</div>
+            <span class="status">lab notes</span>
+          </div>
+          <h3>CT_MR_calibration</h3>
+          <p>自用的 CT/MR 配准程序。偏实验型项目，把医学图像配准流程先整理出来，之后可以继续补数据说明、参数和结果图。</p>
+          <div class="tags"><span class="tag">Medical Imaging</span><span class="tag">Registration</span><span class="tag">Research</span></div>
+          <a class="project-link" href="https://github.com/peppa-27/CT_MR_calibration" target="_blank" rel="noreferrer">打开仓库 →</a>
+        </article>
+
+        <article class="project">
+          <div class="project-top">
+            <div class="project-icon">N</div>
+            <span class="status">2 stars</span>
+          </div>
+          <h3>simple_city_news_analysis</h3>
+          <p>比赛用的城市新闻分析小系统。用 Python 做新闻信息整理和分析，适合以后补一篇“这个系统到底怎么跑”的小文章。</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">News Analysis</span><span class="tag">Competition</span><span class="tag">MIT</span></div>
+          <a class="project-link" href="https://github.com/peppa-27/simple_city_news_analysis" target="_blank" rel="noreferrer">打开仓库 →</a>
+        </article>
+
+        <article class="project">
+          <div class="project-top">
+            <div class="project-icon">★</div>
+            <span class="status">this site</span>
+          </div>
+          <h3>peppa-27.github.io</h3>
+          <p>就是这个主页。纯 HTML + CSS，轻量到可以直接丢给 GitHub Pages。以后仓库多了，这里会变成一个更完整的小展柜。</p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">GitHub Pages</span></div>
+          <a class="project-link" href="https://github.com/peppa-27/peppa-27.github.io" target="_blank" rel="noreferrer">打开仓库 →</a>
+        </article>
       </div>
     </section>
 
     <section id="skills" class="page">
-      <div class="section-head">
-        <h2>Skills</h2>
-        <p>从公开仓库能看出来的方向：Python、小工具、数据分析、医学图像和静态网页。</p>
+      <div class="section-title">
+        <h2>Skill stickers</h2>
+        <p>像贴纸一样贴几个常用的，不假装全都会。</p>
       </div>
+      <div class="skill-grid">
+        <div class="skill"><h3>Python 小工具</h3><div class="tags"><span class="tag">Python</span><span class="tag">Scripts</span><span class="tag">Automation</span></div></div>
+        <div class="skill"><h3>数据和图像</h3><div class="tags"><span class="tag">CT/MR</span><span class="tag">Registration</span><span class="tag">Analysis</span></div></div>
+        <div class="skill"><h3>网页小装修</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">GitHub Pages</span></div></div>
+      </div>
+    </section>
 
-      <div class="two-col">
-        <div class="panel">
-          <h3>做项目</h3>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Data Analysis</span>
-            <span class="tag">Medical Imaging</span>
-            <span class="tag">Automation</span>
-            <span class="tag">AI Tooling</span>
-          </div>
-        </div>
-        <div class="panel">
-          <h3>写页面</h3>
-          <div class="tags">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">Responsive UI</span>
-            <span class="tag">GitHub Pages</span>
-          </div>
-        </div>
+    <section class="page">
+      <div class="section-title">
+        <h2>Desk playlist</h2>
+        <p>给页面补一点轻松气氛。真的要写博客之前，先拿这些当占位。</p>
+      </div>
+      <div class="playlist">
+        <div class="track"><div class="cover">♪</div><div><strong>写 README 的下午</strong><span>把项目讲清楚，比写项目还难一点。</span></div></div>
+        <div class="track"><div class="cover">☆</div><div><strong>半夜重构未遂</strong><span>本来只想改一行，最后开了新分支。</span></div></div>
+      </div>
+    </section>
+
+    <section id="notes" class="page">
+      <div class="section-title">
+        <h2>Notes soon</h2>
+        <p>文章还没写，标题先占座。之后可以慢慢补成真正的笔记区。</p>
+      </div>
+      <div class="memo-grid">
+        <article class="memo"><h3>Cocodex 开发日志</h3><p>记录这个小部件怎么从“想看状态”变成能用的小工具。</p></article>
+        <article class="memo"><h3>CT/MR 配准踩坑</h3><p>数据、参数、可视化检查，先把容易忘的东西写下来。</p></article>
+        <article class="memo"><h3>比赛项目复盘</h3><p>新闻分析系统怎么拆、怎么跑、哪里还能改。</p></article>
       </div>
     </section>
 
     <section id="contact" class="page">
       <div class="contact">
         <div>
-          <h2>主页先支起来，项目慢慢长。</h2>
-          <p>目前公开仓库不多，但已经有 AI 小部件、医学图像工具和数据分析项目。后面 README 和截图补上，这里就更像作品集了。</p>
+          <h2>先这样，之后继续更新。</h2>
+          <p>小站已经开张。等仓库 README、截图和 demo 补起来，这里会更像一个认真但不严肃的作品集。</p>
         </div>
-        <a class="button" href="https://github.com/peppa-27" target="_blank" rel="noreferrer">Open GitHub</a>
+        <a class="button" href="https://github.com/peppa-27" target="_blank" rel="noreferrer">GitHub</a>
       </div>
     </section>
   </main>
 
-  <footer class="page">
-    Built with plain HTML and CSS. Hosted by GitHub Pages.
-  </footer>
+  <footer class="page">made with HTML, CSS, and a little midnight energy.</footer>
 </body>
 </html>
+
+
