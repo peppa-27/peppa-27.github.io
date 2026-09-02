@@ -1,11 +1,522 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>My Homepage</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="一个随手但认真写的 GitHub 个人主页，收集项目、笔记和一些开发记录。">
+  <title>Peppa | GitHub Homepage</title>
+  <style>
+    :root {
+      --ink: #20243a;
+      --muted: #64708a;
+      --line: rgba(73, 88, 126, 0.18);
+      --paper: rgba(255, 255, 255, 0.82);
+      --paper-strong: rgba(255, 255, 255, 0.95);
+      --blue: #4f74d9;
+      --teal: #1d9a99;
+      --rose: #cc5f82;
+      --shadow: 0 20px 60px rgba(48, 61, 98, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      background:
+        linear-gradient(180deg, rgba(246, 248, 255, 0.72), #f8f9fc 540px),
+        url("background_title.png") top center / min(1920px, 150vw) auto no-repeat,
+        #f8f9fc;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1100px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 68px;
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      color: #3d4660;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .nav-links a {
+      padding: 8px 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--blue);
+    }
+
+    .hero {
+      min-height: 620px;
+      display: grid;
+      align-items: center;
+      padding: 84px 0 72px;
+    }
+
+    .hero-copy {
+      width: min(620px, 100%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.62);
+      color: #3b5ca8;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 680px;
+      font-size: clamp(44px, 8vw, 86px);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      margin: 24px 0 0;
+      max-width: 580px;
+      color: #3f4964;
+      font-size: clamp(17px, 2vw, 20px);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper-strong);
+      color: #25304a;
+      font-weight: 760;
+      box-shadow: 0 8px 24px rgba(44, 65, 120, 0.10);
+    }
+
+    .button.primary {
+      border-color: transparent;
+      background: #23304e;
+      color: #fff;
+    }
+
+    section {
+      padding: 44px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 16px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 440px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .project-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: start;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .project h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .project p {
+      margin: 0;
+      color: #526078;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(79, 116, 217, 0.10);
+      color: #37529b;
+      font-size: 12px;
+      font-weight: 760;
+    }
+
+    .project-link {
+      white-space: nowrap;
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .panel {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper-strong);
+      box-shadow: 0 14px 44px rgba(49, 64, 98, 0.10);
+    }
+
+    .panel h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .plain-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #526078;
+    }
+
+    .plain-list li {
+      padding: 10px 0;
+      border-top: 1px solid rgba(73, 88, 126, 0.12);
+    }
+
+    .plain-list li:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      margin: 34px 0 64px;
+      padding: 28px;
+      border-radius: 8px;
+      background: #20243a;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .contact h2 {
+      font-size: clamp(26px, 4vw, 38px);
+    }
+
+    .contact p {
+      margin: 10px 0 0;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .contact .button {
+      background: #fff;
+      color: #20243a;
+    }
+
+    footer {
+      padding: 26px 0 42px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      body {
+        background-size: auto 430px;
+        background-position: top right 32%;
+      }
+
+      .page {
+        width: min(100% - 28px, 1100px);
+      }
+
+      .nav {
+        min-height: 60px;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: 560px;
+        align-items: end;
+        padding-top: 140px;
+      }
+
+      .section-head,
+      .project,
+      .two-col,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: start;
+      }
+
+      .project-link {
+        justify-self: start;
+      }
+
+      .contact {
+        margin-bottom: 42px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-links a:nth-child(2) {
+        display: none;
+      }
+
+      .project,
+      .panel,
+      .contact {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello!</h1>
-    <p>Welcome to my homepage.</p>
+  <nav class="page nav" aria-label="主导航">
+    <a class="brand" href="#">Peppa<span>.dev</span></a>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#notes">Notes</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page hero">
+      <div class="hero-copy">
+        <p class="eyebrow">GitHub Pages / Frontend / Random Builds</p>
+        <h1>写点代码，做点能看的小东西。</h1>
+        <p>
+          这里放一些 GitHub 仓库、学习笔记和半夜突然想做的网页实验。
+          不装得很厉害，但尽量把每个项目收拾到可以点开看。
+        </p>
+        <div class="actions">
+          <a class="button primary" href="#projects">看项目</a>
+          <a class="button" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="projects" class="page">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <p>一些像是从仓库里长出来的项目：小工具、页面、练手 demo 和一点点自动化。</p>
+      </div>
+
+      <div class="project-list">
+        <article class="project">
+          <div>
+            <h3>github_io</h3>
+            <p>这个个人主页本体。用一份静态 HTML 搞定介绍、项目展示、技能和联系方式，适合直接扔到 GitHub Pages。</p>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">GitHub Pages</span>
+            </div>
+          </div>
+          <a class="project-link" href="#">View repo</a>
+        </article>
+
+        <article class="project">
+          <div>
+            <h3>daily-tools</h3>
+            <p>一组给自己用的小工具合集：番茄钟、待办清单、随机选择器和一些懒人脚本。目标是少点重复劳动。</p>
+            <div class="tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">LocalStorage</span>
+              <span class="tag">Tools</span>
+            </div>
+          </div>
+          <a class="project-link" href="#">View repo</a>
+        </article>
+
+        <article class="project">
+          <div>
+            <h3>music-wall</h3>
+            <p>灵感来自这张背景图的音乐墙页面，收集喜欢的歌、封面色彩和一些听歌时写下来的短句。</p>
+            <div class="tags">
+              <span class="tag">Design</span>
+              <span class="tag">CSS Grid</span>
+              <span class="tag">Music</span>
+            </div>
+          </div>
+          <a class="project-link" href="#">View repo</a>
+        </article>
+
+        <article class="project">
+          <div>
+            <h3>codex-notes</h3>
+            <p>记录和 AI 一起写代码时踩过的坑：从部署、样式到一些奇怪但有用的命令备忘录。</p>
+            <div class="tags">
+              <span class="tag">Markdown</span>
+              <span class="tag">Dev Notes</span>
+              <span class="tag">Workflow</span>
+            </div>
+          </div>
+          <a class="project-link" href="#">View repo</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="notes" class="page">
+      <div class="section-head">
+        <h2>Notes</h2>
+        <p>页面不长，但留一点地方放以后可能会写的教程和碎碎念。</p>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <h3>最近在折腾</h3>
+          <ul class="plain-list">
+            <li>把静态页面整理成更像个人名片的样子</li>
+            <li>学习响应式布局，避免手机上文字挤成一团</li>
+            <li>给每个小项目补一点 README 和截图</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>以后想写</h3>
+          <ul class="plain-list">
+            <li>GitHub Pages 从 0 到能访问</li>
+            <li>好看的项目卡片怎么排版</li>
+            <li>用最少代码做一个够用的小工具</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="page">
+      <div class="section-head">
+        <h2>Skills</h2>
+        <p>不是技能树点满，主要是平时真的会拿来做东西的那几类。</p>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <h3>写页面</h3>
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Responsive UI</span>
+            <span class="tag">GitHub Pages</span>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>做工具</h3>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Markdown</span>
+            <span class="tag">Git</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Debugging</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="page">
+      <div class="contact">
+        <div>
+          <h2>有空就继续更新。</h2>
+          <p>项目可能很小，但主页先支起来。后面仓库变多了，再把这里改成真正的作品集。</p>
+        </div>
+        <a class="button" href="https://github.com/" target="_blank" rel="noreferrer">Open GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page">
+    Built with plain HTML and CSS. Hosted by GitHub Pages.
+  </footer>
 </body>
 </html>
